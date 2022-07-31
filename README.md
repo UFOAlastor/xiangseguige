@@ -1,8 +1,10 @@
 # 香色闺阁书源制作教程
 
-选的示范网站是bato.to，一个资源非常全，而且可以大陆直连的网站
+选的网站是bato.to，一个资源非常全，而且可以大陆直连的网站
 
-## 第一步，进入软件，选择站点管理，点击更多，新建站点
+## 新建站点
+
+进入香色闺阁软件，点击左面的站点管理，点击更多，选择新建站点
 
 ![IMG_0400](https://s2.loli.net/2022/07/30/YqUvdtaelFrBM38.png)
 
@@ -82,7 +84,7 @@ bato.to网站的章节链接不是完整URL，而是相对网站主域名的相�
 ~~~python
 //a[@class='visited chapt']/@href || @js:
 let url = 'http://bato.to' +result;
-return result;
+return url;
 ~~~
 
 ### 章节内容
@@ -97,18 +99,28 @@ return result;
 
 ![E5CCD377-48A2-4980-B302-DBF5145F965B](https://s2.loli.net/2022/07/30/kCZEAX1gI4sax5j.png)
 
-然后还是大同小异的格式填入软件相应位置
+**这个网站还有个坑，漫画图片加载是js动态加载，直接爬取网页得不到图片**
+
+![image-20220731124452719](https://s2.loli.net/2022/07/31/wRQzlZNgyHTPamv.png)
+
+这里请求信息我们要加上webView
+
+（这类js加载的网站第一次打开某本漫画会比较慢，要加载完全部资源才会在软件上显示出页码）
 
 ~~~python
 请求信息：
 @js:
-return {'url':result};
+return {'url':result, 'webView':""};
+~~~
 
+之后正文部分还是一样的
+
+~~~python
 正文：
 //img[@class='page-img']/@src
 ~~~
 
-这里把“请求信息”写入“正文”里面也是一样的，用 || 隔开就行
+
 
 ### 书籍分类
 
