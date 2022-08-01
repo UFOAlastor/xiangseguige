@@ -42,9 +42,9 @@ https://bato.to/search?word=%@keyWord&page=%@pageIndex
 
 ![image-20220730202800179](https://s2.loli.net/2022/07/30/YeM17KzHmXLWfQ8.png)
 
-格式很简单
+#### 格式很简单
 
-~~~python
+~~~txt
 // 用于定位类型
 / 用于表示下级关系
 () 用于括取，可以用(div[@id='xxx'])[3]表示并列的id为xxx的div格式的第四个（下标从零开始
